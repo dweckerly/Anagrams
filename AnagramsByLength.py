@@ -6,6 +6,7 @@ wordsBySig = collections.defaultdict(list)
 wordsByLen = collections.defaultdict(list)
 
 anagramsByLength = {}
+countByLength = {}
 
 def signature(word):
     return ''.join(sorted(word))
@@ -22,7 +23,11 @@ for word in wordClean:
 for length, words in wordsByLen.items():
     anagramsByLength[length] = {word: anagrams(word) for word in words if len(anagrams(word)) > 1}
 
+for length, words in wordsByLen.items():
+    countByLength[length] = sum(len(anagrams(word)) - 1 for word in words if len(anagrams(word)) > 1) / 2
+
 allAnagrams = {word : anagrams(word) for word in wordClean if len(anagrams(word)) > 1}
 
-print(anagramsByLength)
+for key, value in countByLength.items(): print(f'{key} : {value}')
+    
 
