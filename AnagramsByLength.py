@@ -29,5 +29,3 @@ for length, words in wordsByLen.items():
 allAnagrams = {word : anagrams(word) for word in wordClean if len(anagrams(word)) > 1}
 
 for key, value in countByLength.items(): print(f'{key} : {value}')
-    
-
